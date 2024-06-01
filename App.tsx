@@ -6,8 +6,9 @@
  */
 
 import React from 'react';
-import type {PropsWithChildren} from 'react';
+import type { PropsWithChildren } from 'react';
 import {
+  Image,
   SafeAreaView,
   ScrollView,
   StatusBar,
@@ -15,6 +16,7 @@ import {
   Text,
   useColorScheme,
   View,
+  TextInput,
 } from 'react-native';
 
 import {
@@ -29,7 +31,7 @@ type SectionProps = PropsWithChildren<{
   title: string;
 }>;
 
-function Section({children, title}: SectionProps): React.JSX.Element {
+function Section({ children, title }: SectionProps): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
   return (
     <View style={styles.sectionContainer}>
@@ -56,43 +58,62 @@ function Section({children, title}: SectionProps): React.JSX.Element {
 }
 
 function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
+  const [text, onChangeText] = React.useState('Useless Text');
+  const [number, onChangeNumber] = React.useState('');
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
+    <>
+      <Text style={{ color: "#D21F3C", fontSize: 20, fontWeight: "bold", margin: 30 }}> BUY-NOT</Text>
+      <Image source={require('./assets/images/background.png')} style={{ width: "auto", borderRadius: 40 }} />
+      <Text style={{ textAlign: "center", fontSize: 30, fontWeight: "bold" }}>Registration</Text>
+    
+      {/* <SafeAreaView style={{
+        width:"70%",
+        // margin:"auto",
+        display:"flex",
+
+        flexDirection:"column",
+        justifyContent:"center",
+        backgroundColor:"pink"
+      }}>
+      <Text style={{
+          //  color:"#FFFFFF",
+          color:"black",
+           fontSize:18,
+        
+      }}>Username</Text>
+        <TextInput
           style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+            width: "100%",
+            marginLeft: "auto",
+            marginRight:"auto",
+            borderColor: '#000000',
+            borderWidth: 1,
+            borderRadius: 15,
+            paddingLeft: 20,
+            backgroundColor:"#00000080",
+            color:"#FFFFFF",
+          }}
+          onChangeText={onChangeNumber}
+          value={number}
+          placeholder="Create your username"
+          keyboardType="numeric"
+        />
+        <TextInput
+          style={{
+            width: "80%",
+            margin: "auto",
+            borderWidth: 1,
+            borderRadius: 15,
+            paddingLeft: 20,
+            backgroundColor:"#00000080",
+            color:"#FFFFFF",
+          }} onChangeText={onChangeNumber}
+          value={number}
+          placeholder="Enter your email"
+          keyboardType="numeric"
+        />
+      </SafeAreaView> */}
+    </>
   );
 }
 
