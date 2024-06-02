@@ -1,139 +1,109 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import { ButtonText,Button, Center, GluestackUIProvider, Input, InputField, Text } from '@gluestack-ui/themed';
+import { config } from '@gluestack-ui/config'; // Optional if you want to use default theme
+import {  Image, ImageBackground, View } from 'react-native';
 
-import React from 'react';
-import type { PropsWithChildren } from 'react';
-import {
-  Image,
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-  TextInput,
-} from 'react-native';
-
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({ children, title }: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+export default function App() {
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
-
-function App(): React.JSX.Element {
-  const [text, onChangeText] = React.useState('Useless Text');
-  const [number, onChangeNumber] = React.useState('');
-  return (
-    <>
+    <GluestackUIProvider config={config}>
       <Text style={{ color: "#D21F3C", fontSize: 20, fontWeight: "bold", margin: 30 }}> BUY-NOT</Text>
-      <Image source={require('./assets/images/background.png')} style={{ width: "auto", borderRadius: 40 }} />
-      <Text style={{ textAlign: "center", fontSize: 30, fontWeight: "bold" }}>Registration</Text>
-    
-      {/* <SafeAreaView style={{
-        width:"70%",
-        // margin:"auto",
-        display:"flex",
+      <View style={{ flex: 1 }}>
+        <ImageBackground
+          source={require('./assets/images/background.png')}
+          style={{ height: 800 }}
+        >
+          <View
+            style={{
+              marginLeft: 25,
+              marginRight:25,
+              marginTop:60,
+              borderRadius: 40,
+              fontSize: 42,
+              lineHeight: 84,
+              fontWeight: 'bold',
+              textAlign: "center",
+              backgroundColor: 'rgba(0, 0, 0, 0.5)',
+              opacity: 80,
+              display: 'flex',
+              flexDirection: 'column',
+              padding: 30
+            }}
+          >
+            <Text style={{ fontSize: 30, fontWeight: "bold", color: "#FFFFFF", textAlign: "center" }}>Registration</Text>
 
-        flexDirection:"column",
-        justifyContent:"center",
-        backgroundColor:"pink"
-      }}>
-      <Text style={{
-          //  color:"#FFFFFF",
-          color:"black",
-           fontSize:18,
-        
-      }}>Username</Text>
-        <TextInput
-          style={{
-            width: "100%",
-            marginLeft: "auto",
-            marginRight:"auto",
-            borderColor: '#000000',
-            borderWidth: 1,
-            borderRadius: 15,
-            paddingLeft: 20,
-            backgroundColor:"#00000080",
-            color:"#FFFFFF",
-          }}
-          onChangeText={onChangeNumber}
-          value={number}
-          placeholder="Create your username"
-          keyboardType="numeric"
-        />
-        <TextInput
-          style={{
-            width: "80%",
-            margin: "auto",
-            borderWidth: 1,
-            borderRadius: 15,
-            paddingLeft: 20,
-            backgroundColor:"#00000080",
-            color:"#FFFFFF",
-          }} onChangeText={onChangeNumber}
-          value={number}
-          placeholder="Enter your email"
-          keyboardType="numeric"
-        />
-      </SafeAreaView> */}
-    </>
+            {/* //username input field */}
+
+
+            <Text style={{ color: "#FFFFFF", fontSize: 15, marginLeft: 20, marginTop: 30, marginBottom: 10 }}>Username</Text>
+
+            <Input style={{ borderColor: "transparent", height: 60 }} variant="outline" size="sm" isDisabled={false} isInvalid={false} isReadOnly={false} >
+              <InputField
+                placeholder='Create your username'
+                style={{
+                  backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                  borderColor: "transparent",
+                  borderRadius: 20,
+                  paddingLeft: 20
+                }}
+              />
+            </Input>
+
+            {/* //email input field */}
+
+
+            <Text style={{ color: "#FFFFFF", fontSize: 15, marginLeft: 20, marginTop: 20, marginBottom: 10 }}>Email</Text>
+
+            <Input style={{ borderColor: "transparent", height: 60 }} variant="outline" size="sm" isDisabled={false} isInvalid={false} isReadOnly={false} >
+              <InputField
+                placeholder='Enter your email'
+                style={{
+                  backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                  borderColor: "transparent",
+                  borderRadius: 20,
+                  paddingLeft: 20
+                }}
+              />
+            </Input>
+
+            {/* phone number field */}
+
+            <Text style={{ color: "#FFFFFF", fontSize: 15, marginLeft: 20, marginTop: 20, marginBottom: 10 }}>Phone Number</Text>
+
+            <Input style={{ borderColor: "transparent", height: 60, display: "flex", alignItems: "center", gap: 20 }} variant="outline" size="sm" isDisabled={false} isInvalid={false} isReadOnly={false} >
+              <Image source={require('./assets/images/pakistanFlag.png')} style={{
+                width: 40,
+                height: 30,
+                zIndex: 50,
+                marginLeft: 20,
+                padding: 10,
+              }} />
+              <InputField
+                placeholder='Enter your phone number'
+                style={{
+                  backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                  borderColor: "transparent",
+                  borderRadius: 20,
+                  paddingLeft: 60,
+                  position: 'absolute',
+                  left: 10,
+                  top: 0,
+                  bottom: 0,
+                  right: 0,
+                  zIndex: 30
+                }}
+              />
+            </Input>
+
+            <Text style={{ color: "#FFFFFF", textAlign: "center", fontSize: 10, marginTop: 20 }}>Why are we getting this information</Text>
+            <Text style={{ color: "#FDD015", textAlign: "center", fontSize: 13, marginTop: 2 }}>Terms & Conditions</Text>
+
+            <Button  style={{borderRadius:10,marginTop:30}} size="lg" variant="solid" action="negative" isDisabled={false} isFocusVisible={true} >
+              <ButtonText>Submit </ButtonText>
+            </Button>
+
+
+          </View>
+        </ImageBackground>
+      </View>
+    </GluestackUIProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
-
-export default App;
