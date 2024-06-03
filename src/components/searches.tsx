@@ -30,7 +30,7 @@ export default function Search() {
                 </View>
                 <Text style={{color:"#D21F3C",textAlign:"center",fontSize:15,fontWeight:"bold",marginTop:20}}> View All Alternatives</Text>
                 </View>
-                <View style={{borderBottomColor:"gray",borderWidth:1,paddingBottom:30,borderRightColor:"transparent",borderLeftColor:"transparent",borderTopColor:"transparent"}}>
+                <View style={{borderBottomColor:"gray",borderWidth:1,paddingBottom:30,marginBottom:30,borderRightColor:"transparent",borderLeftColor:"transparent",borderTopColor:"transparent"}}>
                 <View style={styles.row}>
                     <View style={styles.card}>
                         <ImageBackground

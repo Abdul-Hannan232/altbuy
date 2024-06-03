@@ -51,8 +51,7 @@ const MyComponent = () => {
                     </View>
                 )}
 
-                <Category title={"Popular Categories"} wrap={"none"} widthHeight={100}/>
-                <Search />
+                <Category title={"All Categories"} wrap={"wrap"} widthHeight={150}/>
             </View>
         </TouchableWithoutFeedback>
     );

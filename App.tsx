@@ -3,6 +3,7 @@ import Login from "./src/screens/login"
 import Otp from "./src/screens/otp"
 import Home from "./src/screens/home"
 import React from "react";
+import Category from "./src/screens/categories"
 import { View } from "@gluestack-ui/themed";
 // import { NavigationContainer } from '@react-navigation/native';
 // import { createNativeStackNavigator } from '@react-navigation/native-stack';
