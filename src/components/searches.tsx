@@ -1,11 +1,11 @@
 import React from 'react';
 import { View, Text, ImageBackground, Image, StyleSheet } from "react-native";
 
-export default function Search() {
+export default function Search({title}:any) {
     return (
         <View style={styles.root}>
             <View style={styles.container}>
-                <Text style={styles.title}>Popular Searches</Text>
+                <Text style={styles.title}>{title}</Text>
                 <View style={{borderBottomColor:"gray",borderWidth:1,paddingBottom:30,borderRightColor:"transparent",borderLeftColor:"transparent",borderTopColor:"transparent"}}>
                 <View style={styles.row}>
                     <View style={styles.card}>

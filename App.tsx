@@ -5,6 +5,8 @@ import Home from "./src/screens/home"
 import React from "react";
 import Category from "./src/screens/categories"
 import { View } from "@gluestack-ui/themed";
+import CategoryDeatil from "./src/screens/categoryDetail"
+import Searched from "./src/screens/searchedItems"
 // import { NavigationContainer } from '@react-navigation/native';
 // import { createNativeStackNavigator } from '@react-navigation/native-stack';
 export default function App() {
@@ -21,7 +23,7 @@ export default function App() {
     // <View>
       // <Login />
       // <Otp/>
-     <Home/> 
+     <CategoryDeatil/> 
     // </View>
 
   );
