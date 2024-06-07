@@ -7,23 +7,23 @@ import Category from "./src/screens/categories"
 import { View } from "@gluestack-ui/themed";
 import CategoryDeatil from "./src/screens/categoryDetail"
 import Searched from "./src/screens/searchedItems"
-// import { NavigationContainer } from '@react-navigation/native';
-// import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 export default function App() {
-  // const Stack = createNativeStackNavigator();
+  const Stack = createNativeStackNavigator();
 
   return (
-    // <NavigationContainer>
-    //   <Stack.Navigator initialRouteName="Login">
-    //     <Stack.Screen name="Login" component={Login} />
-    //     <Stack.Screen name="Otp" component={Otp} />
-    //     <Stack.Screen name="Home" component={Home} />
-    //   </Stack.Navigator>
-    // </NavigationContainer>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Login">
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Otp" component={Otp} />
+        <Stack.Screen name="Home" component={Home} />
+      </Stack.Navigator>
+    </NavigationContainer>
     // <View>
-      // <Login />
-      // <Otp/>
-     <CategoryDeatil/> 
+    // <Login />
+    // <Otp/>
+    //  <Searched/> 
     // </View>
 
   );

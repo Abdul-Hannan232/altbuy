@@ -2,7 +2,7 @@ import { ButtonText, Button, Center, GluestackUIProvider, Input, InputField, Tex
 import { config } from '@gluestack-ui/config'; // Optional if you want to use default theme
 import { Image, ImageBackground, View } from 'react-native';
 
-export default function App() {
+export default function App({navigation}:any) {
     return (
         <GluestackUIProvider config={config}>
             <Text style={{ color: "#D21F3C", fontSize: 20, fontWeight: "bold", margin: 30 }}> BUY-NOT</Text>
@@ -118,7 +118,7 @@ export default function App() {
                         <Text style={{ color: "#FFFFFF", textAlign: "center", fontSize: 10, marginTop: 20 }}>Didn’t Received?</Text>
                         <Text style={{ color: "#FDD015", textAlign: "center", fontSize: 13, marginTop: 2 }}>Resend OTP</Text>
 
-                        <Button style={{ borderRadius: 10, marginTop: 30 ,backgroundColor:"#D21F3C"}} size="lg" variant="solid" action="negative" isDisabled={false} isFocusVisible={true} >
+                        <Button onPress={() => navigation.navigate('Home')} style={{ borderRadius: 10, marginTop: 30 ,backgroundColor:"#D21F3C"}} size="lg" variant="solid" action="negative" isDisabled={false} isFocusVisible={true} >
                             <ButtonText>Submit </ButtonText>
                         </Button>
 
