@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Image, TouchableOpacity, TouchableWithoutFeedback, StyleSheet, Text } from 'react-native';
+import { View, Image, ScrollView,TouchableOpacity, TouchableWithoutFeedback, StyleSheet, Text } from 'react-native';
 import Category from '../components/categoriesCarousel';
 import Search from '../components/searches';
 
@@ -18,6 +18,8 @@ const MyComponent = () => {
 
     return (
         <TouchableWithoutFeedback onPress={handlePagePress}>
+                        <ScrollView style={{ flex: 1 }}>
+
             <View style={{ flex: 1 }}>
                 <View style={styles.header}>
                     <Text style={styles.headerText}>
@@ -53,6 +55,7 @@ const MyComponent = () => {
 
                 <Category title={"All Categories"} wrap={"wrap"} widthHeight={150}/>
             </View>
+            </ScrollView>
         </TouchableWithoutFeedback>
     );
 };

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, ScrollView, Image, TouchableOpacity, TouchableWithoutFeedback, StyleSheet, Text } from 'react-native';
 import Category from '../components/categoriesCarousel';
 import Search from '../components/searches';
-
+import Footer from '../components/footer';
 const MyComponent = () => {
     const [menuOpen, setMenuOpen] = useState(false);
 
@@ -19,11 +19,11 @@ const MyComponent = () => {
     return (
         <TouchableWithoutFeedback onPress={handlePagePress}>
             <ScrollView style={{ flex: 1 }}>
-                <View style={{ flex: 1 }}>
+                <View style={{ flex: 1,justifyContent:"center" }}>
                     <View style={styles.header}>
                         <Text style={styles.headerText}>
-                            <TouchableOpacity onPress={handleMenuPress}>
-                                <Image source={require('./../../assets/images/menu.png')} />
+                            <TouchableOpacity onPress={handleMenuPress} >
+                                <Image source={require('./../../assets/images/menu.png')} style={{ marginTop: 4 }} />
                             </TouchableOpacity>
                             <Text style={styles.headerTitle}> BUY-NOT</Text>
                         </Text>
@@ -51,9 +51,11 @@ const MyComponent = () => {
                             </View>
                         </View>
                     )}
-
                     <Category title={"Popular Categories"} wrap={"none"} widthHeight={100} />
-                    <Search />
+                    {/* <Search title={"Popular Search"} /> */}
+                    <View style={{ justifyContent: "center", alignItems: "center", height: 50, backgroundColor: "gold" }}>
+                        <Text >hello</Text>
+                    </View>
                 </View>
             </ScrollView>
         </TouchableWithoutFeedback>
@@ -66,7 +68,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
-        padding: 30,
+        padding: 20,
         borderColor: "#E2E8F0",
         borderWidth: 2,
         position: "relative",
@@ -78,7 +80,7 @@ const styles = StyleSheet.create({
     },
     headerTitle: {
         color: "#D21F3C",
-        fontSize: 20,
+        fontSize: 18,
         fontWeight: "bold",
         marginLeft: 30,
     },

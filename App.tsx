@@ -18,13 +18,10 @@ export default function App() {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Otp" component={Otp} />
         <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="categories" component={Category} />
+        <Stack.Screen name="searchedItems" component={Searched} />
+        <Stack.Screen name="categoryDetail" component={CategoryDeatil} />
       </Stack.Navigator>
     </NavigationContainer>
-    // <View>
-    // <Login />
-    // <Otp/>
-    //  <Searched/> 
-    // </View>
-
   );
 }
