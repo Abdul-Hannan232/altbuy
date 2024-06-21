@@ -9,7 +9,7 @@ export default function Category({ title, wrap, widthHeight,navigation }: any) {
                 {images ? images.map((item: any,) => {
                     return <>
                         <View >
-                        <Button onPress={() => navigation.navigate("categoryDetail")} style={{backgroundColor:"transparent",width:100}}>
+                        <Button         onPress={() => navigation.navigate('categoryDetail')}style={{backgroundColor:"transparent",width:100}}>
                             <ImageBackground source={item.image}
                            
                                 style={{

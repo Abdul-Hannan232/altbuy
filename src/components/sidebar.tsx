@@ -3,7 +3,7 @@ import { View, ScrollView, Image, TouchableOpacity, TouchableWithoutFeedback, St
 import Category from '../components/categoriesCarousel';
 import Search from '../components/searches';
 import Footer from '../components/footer';
-const MyComponent = () => {
+const Sidebar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
 
     const handleMenuPress = () => {
@@ -51,17 +51,9 @@ const MyComponent = () => {
                             </View>
                         </View>
                     )}
-                    <SafeAreaView style={styles.safeContainer}>
-                        <View style={styles.container}>
-                            <ScrollView contentContainerStyle={styles.scrollContent}>
-                                <Category title={"Popular Categories"} wrap={"none"} widthHeight={100} />
-                                <Search title={"Popular Search"} />
-                            </ScrollView>
-                            <View style={styles.footer}>
-                                <Text style={styles.text}>Hello</Text>
-                            </View>
-                        </View>
-                    </SafeAreaView>
+    
+
+
                 </View>
             </ScrollView>
         </TouchableWithoutFeedback>
@@ -69,39 +61,24 @@ const MyComponent = () => {
 };
 
 const styles = StyleSheet.create({
-    safeContainer: {
-        flex: 1,
-    },
+
     container: {
         flex: 1,
+        backgroundColor: '#f0f0f0',
+        justifyContent: "center",
+        height: 635
     },
-    scrollContent: {
-        paddingBottom: 60, // Add padding to ensure the last content is not hidden behind the footer
+    body: {
+        flex: 1,
+        backgroundColor: "skyblue",
+        justifyContent: "center",
+        alignItems: "center"
     },
-    contentText: {
-        fontSize: 16,
-        padding: 16,
-    },
-    footer: {
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        height: 60, // Adjust height as needed
-        backgroundColor: '#f0f0f0', // Background color for the footer
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
+
     text: {
         fontSize: 18,
+        color: '#000',
     },
-    title: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        padding: 16, // Example padding
-    },
-
-
     header: {
         display: "flex",
         flexDirection: "row",
@@ -138,4 +115,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default MyComponent;
+export default Sidebar;
