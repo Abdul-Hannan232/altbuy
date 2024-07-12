@@ -56,10 +56,11 @@ const MyComponent = () => {
                             <ScrollView contentContainerStyle={styles.scrollContent}>
                                 <Category title={"Popular Categories"} wrap={"none"} widthHeight={100} />
                                 <Search title={"Popular Search"} />
-                            </ScrollView>
-                            <View style={styles.footer}>
+                                <View style={styles.footer}>
                                 <Text style={styles.text}>Hello</Text>
                             </View>
+                            </ScrollView>
+                           
                         </View>
                     </SafeAreaView>
                 </View>
