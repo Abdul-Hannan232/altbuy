@@ -1,6 +1,7 @@
 import { ButtonText, Button, Center, GluestackUIProvider, Input, InputField, Text } from '@gluestack-ui/themed';
 import { config } from '@gluestack-ui/config'; // Optional if you want to use default theme
 import { Image, ImageBackground, View } from 'react-native';
+import Footer from '../components/footer';
 
 export default function App({navigation}:any) {
     return (
@@ -121,7 +122,6 @@ export default function App({navigation}:any) {
                         <Button onPress={() => navigation.navigate('Home')} style={{ borderRadius: 10, marginTop: 30 ,backgroundColor:"#D21F3C"}} size="lg" variant="solid" action="negative" isDisabled={false} isFocusVisible={true} >
                             <ButtonText>Submit </ButtonText>
                         </Button>
-
 
                     </View>
                 </ImageBackground>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Image, TouchableOpacity, TouchableWithoutFeedback, StyleSheet, Text } from 'react-native';
 import Category from '../components/categoriesCarousel';
 import Search from '../components/searches';
+import Footer from '../components/footer';
 
 const MyComponent = () => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -52,7 +53,7 @@ const MyComponent = () => {
                 )}
 
                 <Search title={"Coca Cola"}align={"center"}/>
-
+<Footer/>
             </View>
         </TouchableWithoutFeedback>
     );
