@@ -31,7 +31,7 @@ const MyComponent = () => {
                 </View>
 
                 {menuOpen && (
-                      <View style={{ position: "absolute", left: 0, right: 0, top: 0, padding: 20, backgroundColor: "#FFFFFF", height: 800, width: 250,zIndex:40 }}>
+                    <View style={{ position: "absolute", left: 0, right: 0, top: 0, padding: 20, backgroundColor: "#FFFFFF", height: 800, width: 250, zIndex: 40 }}>
                         <View style={{ borderColor: "gray", borderWidth: 2, backgroundColor: "#FFFFFF", borderRadius: 20, paddingLeft: 20, paddingTop: 10, paddingBottom: 10, marginRight: 20 }}>
                             <Text style={{ color: "#2D3748", fontSize: 20, fontWeight: "bold" }}>Username</Text>
                             <Text style={{ fontSize: 10, marginTop: 4 }}>username@gmail.com</Text>
@@ -52,8 +52,8 @@ const MyComponent = () => {
                     </View>
                 )}
 
-                <Search title={"Coca Cola"}align={"center"}/>
-<Footer/>
+                <Search title={"Coca Cola"} align={"center"} />
+                <Footer />
             </View>
         </TouchableWithoutFeedback>
     );
@@ -69,13 +69,13 @@ const styles = StyleSheet.create({
         borderColor: "#E2E8F0",
         borderWidth: 2,
         position: "relative",
-    
+
     },
     headerText: {
         display: "flex",
         flexDirection: "row",
         gap: 20,
-        
+
     },
     headerTitle: {
         color: "#D21F3C",

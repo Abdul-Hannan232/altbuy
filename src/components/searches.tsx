@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
 
     },
     container: {
-        padding: 33,
+        padding:20,
     },
     title: {
         fontSize: 22,
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
         zIndex: 20
     },
     imageBackground: {
-        height: 110,
+        height: 105,
         width: 140,
     },
     image: {

@@ -12,7 +12,7 @@ export default function footer() {
                     alignItems: 'center',
                 }}>
                     <Image source={require('./../../assets/images/home-2.png')} />
-                    <Text onPress={() => navigation.navigate("home")}>Home</Text>
+                    <Text onPress={() => navigation.navigate("Home")}>Home</Text>
                 </View>
                 <View style={{
                     justifyContent: 'center',

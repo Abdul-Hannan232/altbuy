@@ -1,15 +1,19 @@
 import { View, Text, ImageBackground, Dimensions } from "react-native";
 import {images} from "../data/categoriesData.js"
 import { Button } from "@gluestack-ui/themed";
-export default function Category({ title, wrap, widthHeight,navigation }: any) {
+import { useNavigation } from '@react-navigation/native';
+
+export default function Category({ title, wrap, widthHeight,boxWidth,gap }: any) {
+    const navigation = useNavigation();
+
     return <>
-        <View style={{ padding: 33 }}>
+        <View style={{ padding: 33 ,marginTop: 70}}>
             <Text style={{ fontSize: 22, color: "#2D3748", fontWeight: "bold" }}>{title}</Text>
-            <View style={{ display: "flex", flexWrap: wrap, flexDirection: "row", alignItems: "center", gap: 10, marginTop: 60 }}>
+            <View style={{ display: "flex", flexWrap: wrap,justifyContent:"center", flexDirection: "row", alignItems: "center", gap: gap, marginTop:40 }}>
                 {images ? images.map((item: any,) => {
                     return <>
                         <View >
-                        <Button         onPress={() => navigation.navigate('categoryDetail')}style={{backgroundColor:"transparent",width:100}}>
+                        <Button  onPress={() => navigation.navigate('categories')}style={{backgroundColor:"transparent",width:boxWidth,height:boxWidth}}>
                             <ImageBackground source={item.image}
                            
                                 style={{

@@ -1,30 +1,36 @@
-import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View, TouchableWithoutFeedback } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from "react";
 
-export default function header() {
+export default function Header() {
     const navigation = useNavigation();
     const [text, onChangeText] = React.useState('Useless Text');
     const [number, onChangeNumber] = React.useState('');
     const [menuOpen, setMenuOpen] = useState(false);
-    const [searchOpen, setSearchOpen] = useState(false)
+    const [searchOpen, setSearchOpen] = useState(false);
+
     const handleMenuPress = () => {
         setMenuOpen(!menuOpen);
+    };
+
+    const handleSearchPress = () => {
+        setSearchOpen(!searchOpen);
     };
 
     const handlePagePress = () => {
         if (menuOpen || searchOpen) {
             setMenuOpen(false);
-            setSearchOpen(false)
-
+            setSearchOpen(false);
         }
     };
-    const handleSearchPress = () => {
-        setSearchOpen(!searchOpen)
-    }
+
     return (
         <>
-        
+            {(menuOpen || searchOpen) && (
+                <TouchableWithoutFeedback onPress={handlePagePress}>
+                    <View style={styles.overlay} />
+                </TouchableWithoutFeedback>
+            )}
             <View style={styles.header}>
                 <View style={styles.headerText}>
                     <TouchableOpacity onPress={handleMenuPress}>
@@ -32,10 +38,8 @@ export default function header() {
                     </TouchableOpacity>
                     <Text style={styles.headerTitle}>BUY-NOT</Text>
                 </View>
-
                 <TouchableOpacity onPress={handleSearchPress}>
                     <Image source={require('./../../assets/images/search-normal.png')} />
-
                 </TouchableOpacity>
             </View>
 
@@ -62,55 +66,40 @@ export default function header() {
             )}
             {searchOpen && (
                 <View style={styles.menu2}>
-                    <View style={{ borderBottomColor: "#E2E8F0", borderWidth: 1, paddingBottom: 20, borderTopColor: "transparent", borderLeftColor: "transparent", borderRightColor: "transparent" }}>
-                        <View style={{ flexDirection: "row", alignItems: "center" }}>
-                            <View style={{ flex: 1, flexDirection: "row", alignItems: "center" }}>
-                                <Image source={require('./../../assets/images/search-normal.png')} />
-                                <TextInput
-                                    style={styles.input}
-                                    onChangeText={onChangeNumber}
-                                    value={number}
-                                    placeholder='Search Here...'
-                                    keyboardType="numeric"
-                                />
-                            </View>
-                            <Text style={{ color: "#D21F3C", fontSize: 16 }}>Clear All</Text>
+                    <View style={styles.searchContainer}>
+                        <View style={styles.searchHeader}>
+                            <Image source={require('./../../assets/images/search-normal.png')} />
+                            <TextInput
+                                style={styles.input}
+                                onChangeText={onChangeNumber}
+                                value={number}
+                                placeholder='Search Here...'
+                                keyboardType="numeric"
+                            />
+                            <Text style={styles.clearText}>Clear All</Text>
                         </View>
                     </View>
-                    <View style={{ marginTop: 20, borderBottomColor: "#E2E8F0", borderWidth: 1, paddingBottom: 20, borderTopColor: "transparent", borderLeftColor: "transparent", borderRightColor: "transparent" }}>
-                        <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
-                            <Text style={{ color: "#A0AEC0", fontSize: 20 }}>Coca Cola</Text>
-
+                    {['Coca Cola', 'Pepsi', 'RedBull'].map((item, index) => (
+                        <View key={index} style={styles.searchItem}>
+                            <Text style={styles.searchItemText}>{item}</Text>
                             <Image source={require('./../../assets/images/arrow-up.png')} />
                         </View>
-                    </View>
-                    <View style={{ marginTop: 20, borderBottomColor: "#E2E8F0", borderWidth: 1, paddingBottom: 20, borderTopColor: "transparent", borderLeftColor: "transparent", borderRightColor: "transparent" }}>
-                        <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
-                            <Text style={{ color: "#A0AEC0", fontSize: 20 }}>Pepsi</Text>
-
-                            <Image source={require('./../../assets/images/arrow-up.png')} />
-                        </View>
-                    </View>
-                    <View style={{ marginTop: 20, borderBottomColor: "#E2E8F0", borderWidth: 1, paddingBottom: 20, borderTopColor: "transparent", borderLeftColor: "transparent", borderRightColor: "transparent" }}>
-                        <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
-                            <Text style={{ color: "#A0AEC0", fontSize: 20 }}>RedBull</Text>
-
-                            <Image source={require('./../../assets/images/arrow-up.png')} />
-                        </View>
-                    </View>
+                    ))}
                 </View>
             )}
         </>
-    )
+    );
 }
+
 const styles = StyleSheet.create({
-    input: {
-        height: 40,
-        borderWidth: 1,
-        padding: 10,
-        width: 160,
-        borderColor: "transparent",
-        fontSize: 18
+    overlay: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(0,0,0,0.5)',
+        zIndex: 5,
     },
     header: {
         position: 'absolute',
@@ -120,7 +109,6 @@ const styles = StyleSheet.create({
         zIndex: 10,
         flexDirection: 'row',
         justifyContent: 'space-between',
-        // alignItems: 'center',
         padding: 20,
     },
     headerText: {
@@ -129,7 +117,6 @@ const styles = StyleSheet.create({
     },
     headerTitle: {
         color: "#D21F3C",
-
         fontSize: 20,
         fontWeight: 'bold',
         marginLeft: 10,
@@ -154,7 +141,6 @@ const styles = StyleSheet.create({
         padding: 20,
         backgroundColor: '#FFFFFF',
         height: 800,
-
     },
     menuHeader: {
         borderColor: 'gray',
@@ -176,33 +162,57 @@ const styles = StyleSheet.create({
         marginTop: 4,
     },
     menuItem: {
-        display: 'flex',
         flexDirection: 'row',
-        gap: 5,
         alignItems: 'center',
         marginTop: 20,
         borderBottomColor: '#E2E8F0',
         borderWidth: 1,
         paddingBottom: 20,
-        borderRightColor: 'transparent',
-        borderLeftColor: 'transparent',
-        borderTopColor: 'transparent',
+        borderColor: 'transparent',
         marginRight: 20,
     },
     menuItemText: {
         fontSize: 15,
         fontWeight: 'bold',
     },
-    footer: {
-        position: 'absolute',
-        bottom: 0,
-        width: '100%',
-        height: 60,
-        backgroundColor: '#f0f0f0',
-        justifyContent: "space-around",
-        alignItems: 'center',
-        zIndex: 1000,
-        flexDirection: "row",
-
+    input: {
+        height: 40,
+        borderWidth: 1,
+        padding: 10,
+        width: 160,
+        borderColor: "transparent",
+        fontSize: 18,
     },
-})
+    searchContainer: {
+        borderBottomColor: "#E2E8F0",
+        borderWidth: 1,
+        paddingBottom: 20,
+        borderTopColor: "transparent",
+        borderLeftColor: "transparent",
+        borderRightColor: "transparent",
+    },
+    searchHeader: {
+        flexDirection: "row",
+        alignItems: "center",
+    },
+    clearText: {
+        color: "#D21F3C",
+        fontSize: 16,
+    },
+    searchItem: {
+        marginTop: 20,
+        borderBottomColor: "#E2E8F0",
+        borderWidth: 1,
+        paddingBottom: 20,
+        borderTopColor: "transparent",
+        borderLeftColor: "transparent",
+        borderRightColor: "transparent",
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+    },
+    searchItemText: {
+        color: "#A0AEC0",
+        fontSize: 20,
+    },
+});

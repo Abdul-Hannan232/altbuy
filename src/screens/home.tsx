@@ -26,7 +26,7 @@ const MyComponent = () => {
                     <Header />
                     <ScrollView contentContainerStyle={styles.scrollContent}>
                         <View style={styles.container}>
-                            <Category title={"Popular Categories"} wrap={"none"} widthHeight={100} />
+                            <Category title={"Popular Categories"} wrap={"none"} widthHeight={100} gap={10} boxWidth={100} />
                             <Search title={"Popular Search"} />
                             <Search title={"Popular Search"} />
 
@@ -54,6 +54,7 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
+      
     },
     scrollContent: {
         paddingBottom: 100, // Adjusted padding to prevent content from being hidden behind the footer

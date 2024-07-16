@@ -19,14 +19,16 @@ const MyComponent = () => {
 
     return (
         <TouchableWithoutFeedback onPress={handlePagePress}>
-            <ScrollView style={{ flex: 1 }}>
 
                 <View style={{ flex: 1 }}>
                     <Header />
-                    <Category title={"All Categories"} wrap={"wrap"} widthHeight={150} />
+                    <ScrollView style={{ flex: 1 }}>
+
+                    <Category title={"All Categories"} wrap={"wrap"} widthHeight={150} boxWidth={120} gap={60} />
+                    </ScrollView>
+
                     <Footer />
                 </View>
-            </ScrollView>
         </TouchableWithoutFeedback>
     );
 };
