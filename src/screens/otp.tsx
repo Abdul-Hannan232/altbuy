@@ -1,9 +1,24 @@
 import { ButtonText, Button, Center, GluestackUIProvider, Input, InputField, Text } from '@gluestack-ui/themed';
 import { config } from '@gluestack-ui/config'; // Optional if you want to use default theme
-import { Image, ImageBackground, View } from 'react-native';
+import { Image, ImageBackground, StyleSheet, TextInput, View } from 'react-native';
 import Footer from '../components/footer';
+import { useRef } from 'react';
 
-export default function App({navigation}:any) {
+export default function App({ navigation }: any) {
+    const inputRefs = [
+        useRef<TextInput>(null),
+        useRef<TextInput>(null),
+        useRef<TextInput>(null),
+        useRef<TextInput>(null),
+        useRef<TextInput>(null),
+    ];
+
+    const handleInputChange = (text: string, index: number) => {
+        if (text.length === 1 && index < inputRefs.length - 1) {
+            inputRefs[index + 1].current?.focus();
+        }
+    };
+
     return (
         <GluestackUIProvider config={config}>
             <Text style={{ color: "#D21F3C", fontSize: 20, fontWeight: "bold", margin: 30 }}> BUY-NOT</Text>
@@ -37,80 +52,17 @@ export default function App({navigation}:any) {
 
 
 
-                        <View style={{
-                            display: "flex",
-                            flexDirection:"row",
-                            gap: 10,
-                            marginTop:40, 
-                        }}>
-                            <Input style={{ borderColor: "transparent", height: 50,width:50,textAlign: "center" }} variant="outline" size="sm" isDisabled={false} isInvalid={false} isReadOnly={false} >
-                                <InputField
-                                    placeholder='5'
-                                    style={{
-                                        backgroundColor: 'rgba(0, 0, 0, 0.5)',
-                                        borderColor: "transparent",
-                                        borderRadius: 15,
-                                        fontSize:20,
-                                        color:"#FFFFFF",
-                                        textAlign: "center",
-                                    }}
+                        <View style={styles.container}>
+                            {inputRefs.map((ref, index) => (
+                                <TextInput
+                                    key={index}
+                                    ref={ref}
+                                    style={styles.input}
+                                    keyboardType="numeric"
+                                    maxLength={1}
+                                    onChangeText={(text) => handleInputChange(text, index)}
                                 />
-                            </Input>
-
-                            {/* //email input field */}
-                            <Input style={{ borderColor: "transparent",height: 50,width:50,textAlign: "center" }} variant="outline" size="sm" isDisabled={false} isInvalid={false} isReadOnly={false} >
-                                <InputField
-                                    placeholder='0'
-                                    style={{
-                                        backgroundColor: 'rgba(0, 0, 0, 0.5)',
-                                        borderColor: "transparent",
-                                        borderRadius: 15,
-                                        fontSize:20,
-                                        color:"#FFFFFF",
-                                        textAlign: "center",
-                                    }}
-                                />
-                            </Input>
-                            <Input style={{ borderColor: "transparent", height: 50,width:50,textAlign: "center" }} variant="outline" size="sm" isDisabled={false} isInvalid={false} isReadOnly={false} >
-                                <InputField
-                                    placeholder='7'
-                                    style={{
-                                        backgroundColor: 'rgba(0, 0, 0, 0.5)',
-                                        borderColor: "transparent",
-                                        borderRadius: 15,
-                                        fontSize:20,
-                                        color:"#FFFFFF",
-                                        textAlign: "center",
-                                    }}
-                                />
-                            </Input>
-                            <Input style={{ borderColor: "transparent", height: 50,width:50,textAlign: "center" }} variant="outline" size="sm" isDisabled={false} isInvalid={false} isReadOnly={false} >
-                                <InputField
-                                    placeholder='2'
-                                    style={{
-                                        backgroundColor: 'rgba(0, 0, 0, 0.5)',
-                                        borderColor: "transparent",
-                                        borderRadius: 15,
-                                        fontSize:20,
-                                        color:"#FFFFFF",
-                                        textAlign: "center",
-                                    }}
-                                />
-                            </Input>
-                            <Input style={{ borderColor: "transparent", height: 50,width:50, textAlign: "center" }} variant="outline" size="sm" isDisabled={false} isInvalid={false} isReadOnly={false} >
-                                <InputField
-                                    placeholder=''
-                                    style={{
-                                        backgroundColor: 'rgba(0, 0, 0, 0.5)',
-                                        borderColor: "transparent",
-                                        borderRadius: 15,
-                                        fontSize:20,
-                                        color:"#FFFFFF",
-                                        textAlign: "center",
-                                    }}
-                                />
-                            </Input>
-
+                            ))}
                         </View>
                         {/* phone number field */}
 
@@ -119,7 +71,7 @@ export default function App({navigation}:any) {
                         <Text style={{ color: "#FFFFFF", textAlign: "center", fontSize: 10, marginTop: 20 }}>Didn’t Received?</Text>
                         <Text style={{ color: "#FDD015", textAlign: "center", fontSize: 13, marginTop: 2 }}>Resend OTP</Text>
 
-                        <Button onPress={() => navigation.navigate('Home')} style={{ borderRadius: 10, marginTop: 30 ,backgroundColor:"#D21F3C"}} size="lg" variant="solid" action="negative" isDisabled={false} isFocusVisible={true} >
+                        <Button onPress={() => navigation.navigate('Home')} style={{ borderRadius: 10, marginTop: 30, backgroundColor: "#D21F3C" }} size="lg" variant="solid" action="negative" isDisabled={false} isFocusVisible={true} >
                             <ButtonText>Submit </ButtonText>
                         </Button>
 
@@ -129,3 +81,21 @@ export default function App({navigation}:any) {
         </GluestackUIProvider>
     );
 }
+const styles = StyleSheet.create({
+    container: {
+        display: 'flex',
+        flexDirection: 'row',
+        gap: 10,
+        marginTop: 40,
+    },
+    input: {
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        borderColor: 'transparent',
+        borderRadius: 15,
+        fontSize: 20,
+        color: '#FFFFFF',
+        textAlign: 'center',
+        height: 50,
+        width: 50,
+    },
+});
