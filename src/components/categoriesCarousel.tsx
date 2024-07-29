@@ -32,3 +32,4 @@ export default function Category({ title, wrap, widthHeight,boxWidth,gap }: any)
         </View>
     </>
 }
+
