@@ -24,6 +24,8 @@ export default function Header() {
         }
     };
 
+
+    // header
     return (
         <>
             {(menuOpen || searchOpen) && (
